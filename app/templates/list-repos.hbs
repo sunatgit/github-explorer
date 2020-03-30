@@ -1,3 +1,9 @@
-{{#each @model as |repo|}}
-    <li>Name: {{repo.name}} - owner: {{repo.owner}}</li>
-{{/each}}
+<ul>
+    {{#each @model as |repo|}}
+    <li>
+        <LinkTo @route="repo-details" @models={{array repo.name repo.owner}}>
+            {{repo.name}}
+        </LinkTo>
+    </li>
+    {{/each}}
+</ul>
