@@ -1,7 +1,7 @@
 <ul>
     {{#each @model as |repo|}}
     <li>
-        <LinkTo @route="repo-details" @models={{array repo.name repo.owner}}>
+        <LinkTo @route="repo-details" @models={{array repo.name repo.owner}} @query={{hash limit="5"}}>
             {{repo.name}}
         </LinkTo>
     </li>
