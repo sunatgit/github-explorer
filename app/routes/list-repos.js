@@ -1,20 +1,14 @@
 import Route from '@ember/routing/route';
+import { inject as service } from '@ember/service';
 
-export default class ListReposRoute extends Route {
-    model(){
-        return [
-            {
-                name: 'EmberJs',
-                owner: 'EmberDevs'
-            },
-            {
-                name: 'NodeJs',
-                owner: 'NodeFoundation'
-            },
-            {
-                name: 'Angular Js',
-                owner: 'AngularDevs'
-            },
-        ]
-    }
+export default class ReposRoute extends Route {
+  @service store;
+  async model(params) {
+    let user = await this.store.findRecord('user', params.user_id);
+    let repos = await user.get('ownedRepos');
+    return {
+      repos: repos,
+      user: user
+    };
+  }
 }

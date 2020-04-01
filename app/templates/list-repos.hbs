@@ -1,9 +1,9 @@
 <ul>
-    {{#each @model as |repo|}}
-    <li>
-        <LinkTo @route="repo-details" @models={{array repo.name repo.owner}} @query={{hash limit="5"}}>
-            {{repo.name}}
-        </LinkTo>
-    </li>
-    {{/each}}
+  {{#each @model.repos  as |repo|}}
+  <li>
+    <LinkTo @route="repo-details" @models={{array @model.user.login repo.name}} @query={{hash user=@model.user.login}}>
+      {{repo.fullName}}
+    </LinkTo>
+  </li>
+  {{/each}}
 </ul>

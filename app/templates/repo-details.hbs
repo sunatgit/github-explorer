@@ -1,19 +1,6 @@
-<div>
-    <p>
-        <h1>
-            Received router params
-        </h1>
-        <p>
-            owner - user
-        </p>
-        <p>
-            repo - repo
-        </p>
-    </p>
-    <p>
-        <h2>Query params</h2>
-        <p>
-            Limit - {{limit}}
-        </p>
-    </p>
-</div>
+<h1>
+  {{@model.repo.fullName}}
+</h1>  
+
+<UserList @title="Contributors" @users={{@model.contributors}} />
+<UserList @title="Stargazers" @users={{@model.stargazers}} />
