@@ -1,6 +1,17 @@
-<h1>
+<h1 {{did-update this.reset @model.repo.fullName this}}>
   {{@model.repo.fullName}}
 </h1>  
+
+<button {{on "click" this.getForks}}>Toggle Forks({{@model.repo.forksCount}})</button>
+{{#if this.showForks}}
+  {{#each this.forks  as |repo|}}
+  <li>
+    <LinkTo @route="repo-details" @models={{array repo.owner.login repo.name}} @query={{hash user=repo.owner.login}}>
+      {{repo.fullName}}
+    </LinkTo>
+  </li>
+  {{/each}}
+{{/if}}
 
 <UserList @title="Contributors" @users={{@model.contributors}} />
 <UserList @title="Stargazers" @users={{@model.stargazers}} />
