@@ -9,4 +9,5 @@ export default class Router extends EmberRouter {
 Router.map(function() {
   this.route('list-repos', {path: '/:user_id'});
   this.route('repo-details', { path: '/:user_id/:repo_id' });
+  this.route('login');
 });

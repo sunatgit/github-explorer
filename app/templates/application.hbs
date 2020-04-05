@@ -1,4 +1,12 @@
 <LinkTo @route="list-repos" @model={{'emberjs'}}>Home</LinkTo>
-
+<p>
+  {{#if this.session.isAuthenticated}}
+    Authenticated <br>
+    <button {{on "click" this.logout}}>Log Out</button>
+  {{else}}
+    <LinkTo @route="login">Login</LinkTo> 
+  {{/if}}
+</p>
+<hr>
 
 {{outlet}}
